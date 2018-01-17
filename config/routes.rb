@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       post 'authenticate', to: 'authentication#authenticate'
       post 'generator', to: 'user#generate_token'
       resources :project, only: [:index, :create, :update, :destroy]
+      resources :contact, only: [:index, :create, :update, :destroy]
     end
   end
 

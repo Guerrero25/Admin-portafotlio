@@ -1,31 +1,30 @@
 class Api::V1::ProjectController < Api::V1::BaseController
-    before_action do
+    before_action except: [:index] do
         authenticate_permission(2, @current_level)
     end
 
     def index
-        response = @current_user.projects.all
-        render json: { response: response }
+        @projects = @current_user.projects.all
     end
 
     def create
-        response = @current_user.projects.create(project_params)
-        render json: { response: response }
+        @project = @current_user.projects.create(project_params)
+        render 'show'
     end
 
     def update
-        @current_user.update_attributes(project_params)
-        render json: { response: @current_user }
+        @project = @current_user.projects.find(params[:id]).update_attributes(project_params)
+        render 'show'
     end
 
     def destroy
-        response = @current_user.projects.destroy(params[:id])
-        render json: { response: response }
+        @project = @current_user.projects.destroy(params[:id])
+        render 'show'
     end
 
     private
 
     def project_params
-        params.require(:project).permit(:name, :repository, :cover)
+        params.permit(:name, :repository, :cover)
     end
 end
