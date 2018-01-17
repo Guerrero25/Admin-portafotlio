@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'authenticate', to: 'authentication#authenticate'
       post 'generator', to: 'user#generate_token'
+      resources :project, only: [:index, :create, :update, :destroy]
     end
   end
 

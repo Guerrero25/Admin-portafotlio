@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115160117) do
+ActiveRecord::Schema.define(version: 20180117195303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "projects", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.string "repository"
+    t.string "cover_file_name"
+    t.string "cover_content_type"
+    t.integer "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "fullname"
@@ -22,6 +35,12 @@ ActiveRecord::Schema.define(version: 20180115160117) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "public_token"
+    t.text "bio"
+    t.string "profile_file_name"
+    t.string "profile_content_type"
+    t.integer "profile_file_size"
+    t.datetime "profile_updated_at"
   end
 
+  add_foreign_key "projects", "users"
 end
