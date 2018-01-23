@@ -1,4 +1,4 @@
-class Api::V1::ProjectController < Api::V1::BaseController
+class Api::V1::ProjectsController < Api::V1::BaseController
     before_action except: [:index] do
         authenticate_permission(2, @current_level)
     end

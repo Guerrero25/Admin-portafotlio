@@ -1,6 +1,10 @@
-class Api::V1::UserController < Api::V1::BaseController
+class Api::V1::UsersController < Api::V1::BaseController
     before_action only: [:generate_token] do
         authenticate_permission(2, @current_level)
+    end
+
+    def information
+        @contacts = @current_user.contacts
     end
 
     def generate_token

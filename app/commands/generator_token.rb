@@ -14,7 +14,7 @@ class GeneratorToken
     attr_accessor :current_user
 
     def generator
-        if current_user.public_token === ''
+        if current_user.public_token == nil
             token = JsonWebToken.encode({ user_id: current_user.id, permission_level: 1 }, 12.months.from_now)
             current_user.update(public_token: token)
             current_user.public_token if current_user.save

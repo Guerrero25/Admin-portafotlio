@@ -1,4 +1,4 @@
-class Api::V1::ContactController < Api::V1::BaseController
+class Api::V1::ContactsController < Api::V1::BaseController
     before_action  except: [:index] do 
         authenticate_permission(2, @current_level)
     end
