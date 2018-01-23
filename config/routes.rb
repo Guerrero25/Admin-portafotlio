@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post 'authenticate', to: 'authentication#authenticate'
-      post 'generator', to: 'user#generate_token'
+      scope :users do
+        get 'generate' => :generate_token, as: 'generate_token'
+      end
       resources :project, only: [:index, :create, :update, :destroy]
       resources :contact, only: [:index, :create, :update, :destroy]
     end
