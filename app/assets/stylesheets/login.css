@@ -1,0 +1,22 @@
+.main {
+    padding-top: 4em; 
+}
+
+.content {
+    border: 1px solid #000;
+    margin: 0 auto;
+    max-width: 512px;
+    padding: 1em;
+}
+
+.log-options {
+    border: 1px solid red;
+    width: 100%;
+}
+
+.log-option {
+    display: inline-block;
+    padding: .5em;
+    text-align: center;
+    width: 49.29%;
+}

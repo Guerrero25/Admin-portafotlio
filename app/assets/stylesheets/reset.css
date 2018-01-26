@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+body,
+ul,
+ol,
+html,
+figure,
+nav {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #e0e0e0;
+    color: #212121;
+    font-family: 'Nunito', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6  {
+    margin: 0;
+    margin-bottom: .5em;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 1.5em;
+    margin-top: 1em;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1em;
+}
