@@ -1,7 +1,22 @@
 class Main extends React.Component {
-    render() {
+    constructor () {
+        super();
+        this.state = {
+            user: {},
+            auth_token: ''
+        }
+    }
+
+    loginUpdate (user, auth_token) {
+        this.setState({
+            user,
+            auth_token
+        })
+    }
+
+    render () {
         return (
-            <h1>Main Component</h1>
+            this.state.auth_token !== ''  ? <Admin /> : <Login loginUpdate={this.loginUpdate} />
         )
     }
 }

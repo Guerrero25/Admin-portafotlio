@@ -1,22 +1,86 @@
-.main {
-    padding-top: 4em; 
+.card-white {
+    background-color: #fff;
+    border-radius: .2em;
+    padding: 1em;
+    position: relative;
 }
 
 .content {
-    border: 1px solid #000;
     margin: 0 auto;
+    margin-top: 4em;
     max-width: 512px;
-    padding: 1em;
 }
 
 .log-options {
-    border: 1px solid red;
     width: 100%;
 }
 
 .log-option {
-    display: inline-block;
-    padding: .5em;
+    background-color: #f44336;
+    border: 1px solid #f44336;
+    color: #fff;
+    cursor: pointer;
+    float: left;
+    line-height: 2.5em;
     text-align: center;
-    width: 49.29%;
+    text-transform: uppercase;
+    width: 50%;
+}
+
+.active {
+    background-color: #fff;
+    color: #f44336;q
+}
+
+.frame-form {
+    display: table;
+    margin-top: 3.5em;
+    width: 100%;
+}
+
+.login-option-form {
+    margin: 0 auto;
+    padding: .3em .7em;
+    width: 60%;
+}
+
+.form-group {
+    margin-bottom: 1em;
+}
+
+.form-control, .form-submit {
+    background-color: #fff;
+    border-radius: .75em;
+    display: block;
+    line-height: 1.50em;
+    outline: none;
+    padding: .5em .7em;
+    width: 100%;
+}
+
+.form-control {
+    border: 1px solid #ccc;
+    color: #212121;
+    font-size: .9em;
+}
+
+.form-group + label {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.form-submit {
+    background-color: #f44336;
+    border: none;
+    box-shadow: inset -1px -2px 0 #610f0957;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form-submit:hover {
+    background-color: #610f0957;
+}
+
+.form-submit:active {
+    box-shadow: none;
 }
