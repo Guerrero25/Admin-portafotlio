@@ -1,22 +1,34 @@
 class Main extends React.Component {
-    constructor () {
-        super();
+    constructor (props) {
+        super(props)
+
         this.state = {
-            user: {},
             auth_token: ''
+        }
+
+        this.loginUpdate = this.loginUpdate.bind(this)
+    }
+
+    componentWillMount () {
+        if (localStorage.getItem('auth_token')) {
+            
+            this.setState({
+                auth_token: localStorage.auth_token
+            })
         }
     }
 
-    loginUpdate (user, auth_token) {
+    loginUpdate (auth_token) {
+        localStorage.setItem('auth_token', auth_token)
+
         this.setState({
-            user,
             auth_token
         })
     }
 
     render () {
         return (
-            this.state.auth_token !== ''  ? <Admin /> : <Login loginUpdate={this.loginUpdate} />
+            this.state.auth_token !== ''  ? <Admin /> : <Login onLogin={this.loginUpdate} />
         )
     }
 }
