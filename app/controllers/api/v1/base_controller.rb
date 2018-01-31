@@ -7,7 +7,6 @@ class Api::V1::BaseController < ApplicationController
     def authenticate_request
         auth = AuthorizeApiRequest.call(request.headers).result
         if auth
-            logger.debug "Authoritation result: #{result}"
             @current_user = auth[:user]
             @current_level = auth[:permission_level]
         else
