@@ -18,11 +18,12 @@ class AuthorizeApiRequest
             decode_token = decoded_auth_token
 
             @user ||= User.find(decode_token[:user_id])
-            @permission_level = decode_token[:permission_level]
+            @permission_level ||= decode_token[:permission_level]
             if @user == nil || @permission_level == nil
                 errors.add(:token, 'Invalid token')
+                return nil
             else
-                current = { user: @user, permission_level: @permission_level }
+                return { user: @user, permission_level: @permission_level }
             end
         end
     end
