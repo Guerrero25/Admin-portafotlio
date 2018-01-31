@@ -3,15 +3,16 @@ class Main extends React.Component {
         super(props)
 
         this.state = {
-            auth_token: ''
+            auth_token: '',
+            errors: []
         }
 
         this.loginUpdate = this.loginUpdate.bind(this)
+        this.handleError = this.handleError.bind(this)
     }
 
     componentWillMount () {
         if (localStorage.getItem('auth_token')) {
-            
             this.setState({
                 auth_token: localStorage.auth_token
             })
@@ -26,9 +27,16 @@ class Main extends React.Component {
         })
     }
 
+    handleError (error) {
+        this.setState(prevState => ({
+            errors: prevState.errors.concat(error),
+            auth_token: ''
+        }))
+    }
+
     render () {
         return (
-            this.state.auth_token !== ''  ? <Admin /> : <Login onLogin={this.loginUpdate} />
+            this.state.auth_token != ''  ? <Admin auth_token={this.state.auth_token} onError={this.handleError} /> : <Login errors={this.state.errors} onLogin={this.loginUpdate} onError={this.handleError} />
         )
     }
 }
